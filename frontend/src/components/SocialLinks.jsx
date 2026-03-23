@@ -7,30 +7,42 @@ const SocialLinks = () => {
     {
       name: 'GitHub',
       url: 'https://github.com/Anees-al',
-      icon: <Github size={20} />,
-      color: 'hover:text-[#2f81f7]',
-      label: 'anees-al'
+      icon: <Github size={26} />,
+      iconColor: 'text-[#c9d1d9]',
+      iconBg: 'bg-[#c9d1d9]/10',
+      borderHover: 'hover:border-[#c9d1d9]/50',
+      glow: 'from-[#c9d1d9]/8',
+      label: '@anees-al',
+      badge: 'code',
     },
     {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/anees-al',
-      icon: <Linkedin size={20} />,
-      color: 'hover:text-[#0a66c2]',
-      label: 'anees-al'
+      icon: <Linkedin size={26} />,
+      iconColor: 'text-[#0a8fd8]',
+      iconBg: 'bg-[#0a8fd8]/15',
+      borderHover: 'hover:border-[#0a8fd8]/50',
+      glow: 'from-[#0a8fd8]/10',
+      label: '@anees-al',
+      badge: 'network',
     },
     {
       name: 'Portfolio',
       url: 'https://anees-al.github.io/MyPortfolio/',
-      icon: <Globe size={20} />,
-      color: 'hover:text-[#3fb950]',
-      label: 'MyPortfolio'
-    }
+      icon: <Globe size={26} />,
+      iconColor: 'text-[#3fb950]',
+      iconBg: 'bg-[#3fb950]/15',
+      borderHover: 'hover:border-[#3fb950]/50',
+      glow: 'from-[#3fb950]/10',
+      label: 'MyPortfolio',
+      badge: 'deploy',
+    },
   ];
 
   return (
     <section className="py-12 px-4 bg-[#0d1117] border-t border-[#30363d]">
       <div className="max-w-4xl mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -56,25 +68,32 @@ const SocialLinks = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className="group p-6 bg-[#161b22] border border-[#30363d] rounded-xl hover:border-[#8b949e]/50 transition-all flex flex-col items-center gap-4 relative overflow-hidden"
+              whileHover={{ scale: 1.03 }}
+              className={`group p-6 bg-[#161b22] border border-[#30363d] ${link.borderHover} rounded-xl transition-all duration-300 flex flex-col items-center gap-4 relative overflow-hidden`}
             >
-              {/* Background Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#3fb950]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              <div className={`p-4 rounded-full bg-[#0d1117] border border-[#30363d] text-[#7d8590] group-hover:bg-[#30363d] ${link.color} transition-all duration-300`}>
+              {/* Colored background glow on hover */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${link.glow} via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+
+              {/* Colored Icon */}
+              <div className={`p-4 rounded-full ${link.iconBg} border border-[#30363d] ${link.iconColor} transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
                 {link.icon}
               </div>
-              
+
               <div className="text-center z-10">
                 <h3 className="text-[#e6edf3] font-bold font-mono text-sm mb-1">{link.name}</h3>
-                <p className="text-[#7d8590] text-xs font-mono group-hover:text-[#e6edf3] transition-colors">
+                <p className={`${link.iconColor} text-xs font-mono opacity-75 group-hover:opacity-100 transition-opacity`}>
                   {link.label}
                 </p>
               </div>
 
+              {/* Platform badge */}
+              <span className={`text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full border border-current ${link.iconColor} opacity-50 group-hover:opacity-100 font-mono transition-opacity`}>
+                {link.badge}
+              </span>
+
+              {/* External link icon */}
               <div className="absolute top-4 right-4 text-[#7d8590] opacity-0 group-hover:opacity-100 transition-opacity">
-                <ExternalLink size={14} />
+                <ExternalLink size={13} />
               </div>
             </motion.a>
           ))}

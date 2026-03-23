@@ -3,6 +3,7 @@ import { Terminal, BookOpen, Star, Cpu, Code, Bug, Hash, History } from 'lucide-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import ThreeBackground from './ThreeBackground';
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -55,6 +56,9 @@ const Hero = () => {
 
   return (
     <div className="flex flex-col items-center justify-center p-4 md:p-10 overflow-hidden relative min-h-screen bg-[#0d1117] text-[#e6edf3] font-mono">
+      {/* Three.js 3D Background */}
+      <ThreeBackground />
+
       {/* Grid Pattern Background */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3fb950 1px, transparent 0)', backgroundSize: '40px 40px' }} />
 
@@ -70,7 +74,7 @@ const Hero = () => {
         onMouseMove={handleMouseMove}
         onMouseLeave={() => { x.set(0); y.set(0); }}
         style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-        className="w-full max-w-4xl text-center z-10"
+        className="w-full max-w-4xl text-center z-10 relative"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
