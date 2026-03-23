@@ -19,7 +19,7 @@ const Journal = () => {
     if (editId) {
       const fetchJournal = async () => {
         try {
-          const res = await axios.get(`http://localhost:5000/api/journals`);
+          const res = await axios.get(`https://journal-app-k0ab.onrender.com/api/journals`);
           const journal = res.data.data.find(j => j._id === editId);
           if (journal) {
             setTitle(journal.title);
@@ -55,9 +55,9 @@ const Journal = () => {
       };
 
       if (editId) {
-        await axios.put(`http://localhost:5000/api/journals/${editId}`, entryData);
+        await axios.put(`https://journal-app-k0ab.onrender.com/api/journals/${editId}`, entryData);
       } else {
-        await axios.post('http://localhost:5000/api/journals', entryData);
+        await axios.post('https://journal-app-k0ab.onrender.com/api/journals', entryData);
       }
       navigate('/library');
     } catch (error) {

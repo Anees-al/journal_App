@@ -14,8 +14,8 @@ const Library = () => {
   useEffect(() => {
     const fetchJournals = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/journals');
-        setJournals(res.data.data);
+        const res = await axios.get('https://journal-app-k0ab.onrender.com/api/journals');
+        setJournals(res.data.data || []);
       } catch (error) {
         console.error('Error fetching journals:', error);
       } finally {
@@ -28,7 +28,7 @@ const Library = () => {
   const deleteEntry = async (id) => {
     try {
       playSound('delete');
-      await axios.delete(`http://localhost:5000/api/journals/${id}`);
+      await axios.delete(`https://journal-app-k0ab.onrender.com/api/journals/${id}`);
       setJournals(journals.filter(j => j._id !== id));
     } catch (error) {
       console.error('Error deleting journal:', error);

@@ -11,7 +11,7 @@ const Hero = () => {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/journals');
+        const res = await axios.get('https://journal-app-k0ab.onrender.com/api/journals');
         const journalDates = res.data.data.map(j => new Date(j.date).toLocaleDateString());
         
         const last14Days = [];

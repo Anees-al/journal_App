@@ -13,7 +13,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+      const res = await axios.post('https://journal-app-k0ab.onrender.com/api/auth/login', { username, password });
       if (res.data.success) {
         localStorage.setItem('auth_token', res.data.token);
         navigate('/');
